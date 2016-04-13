@@ -60,6 +60,8 @@ public class RegisterActivity extends Activity {
                                 Toast.makeText(getApplicationContext(), "Error: "+jsonObject.getString("exists"), Toast.LENGTH_SHORT).show();
                             }else if(jsonObject.names().get(0).equals("error")){
                                 Toast.makeText(getApplicationContext(), "Error: "+jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                            }else if(jsonObject.names().get(0).equals("both")){
+                                Toast.makeText(getApplicationContext(), "Error: "+jsonObject.getString("both"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
