@@ -1,6 +1,8 @@
 package com.pineapple.euguardei;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,8 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+    private static final String MyPrefs = "SharedPreferences";
     private EditText email, password;
     private Button login, registrar;
     private RequestQueue requestQueue;
@@ -35,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPreferences = getSharedPreferences(MyPrefs,MODE_PRIVATE);
 
         email = (EditText) findViewById(R.id.editTextEmail);
         password = (EditText) findViewById(R.id.editTextPassword);
@@ -52,8 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.names().get(0).equals("success")){
-                                Toast.makeText(LoginActivity.this, "SUCCESS "+jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                //store string id_user into SharedPreferences;
+                                sharedPreferences.edit().putString("id_user",jsonObject.getString("id_user")).apply();
                             }else{
                                 Toast.makeText(LoginActivity.this, "Error"+jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                             }

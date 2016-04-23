@@ -54,7 +54,7 @@ public class RegisterActivity extends Activity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.names().get(0).equals("success")){
-                                Toast.makeText(getApplicationContext(), "SUCCESS "+jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             }else if(jsonObject.names().get(0).equals("exists")){
                                 Toast.makeText(getApplicationContext(), "Error: "+jsonObject.getString("exists"), Toast.LENGTH_SHORT).show();
