@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
     private Button login, registrar;
     private RequestQueue requestQueue;
-    private static final String URL = "http://192.168.1.105:80/EuGuardei/user_control.php";
+    private static final String URL = "http://192.168.1.103:80/EuGuardei/user_control.php";
     private StringRequest request;
 
 

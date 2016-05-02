@@ -22,6 +22,10 @@
 
         <activity android:name=".MainActivity"/>
 
+        <activity android:name=".InsertActivity"/>
+
+        <activity android:name=".ViewActivity"/>
+
     </application>
 
 </manifest>
