@@ -22,6 +22,7 @@ header('Content-Type: application/json');
 				while($row = mysqli_fetch_array($result)){
 					//Pushing into array created 
 					array_push($list,array(
+					"id_item"=>$row['id_item'],
 					"desc_item"=>$row['desc_item'],
 					"date_item"=>$row['date_item'],
 					));
